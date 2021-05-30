@@ -50,5 +50,36 @@ namespace TGS.Challenge.Tests
 
             Assert.AreEqual(6, count);
         }
+
+        [Test()]
+        public void Aaaaaa_Returns_Correct_Count()
+        {
+            var count = _vowelCount.Count("Aaaaaa");
+
+            Assert.AreEqual(6, count);
+        }
+
+        [Test()]
+        public void Alpha_Numeric_Returns_Correct_Count()
+        {
+            var count = _vowelCount.Count("@Are numbers and special characters allowed?! 123456789");
+
+            Assert.AreEqual(14, count);
+        }
+
+        [Test()]
+        public void Empty_String_Returns_Correct_Count()
+        {
+            var exceptionMessage = "Value cannot be null";
+
+            var ex = Assert.Throws<ArgumentException>(() => _vowelCount.Count(null));
+            Assert.That(ex.Message, Is.EqualTo(exceptionMessage));
+
+            ex = Assert.Throws<ArgumentException>(() => _vowelCount.Count(string.Empty));
+            Assert.That(ex.Message, Is.EqualTo(exceptionMessage));
+
+            ex = Assert.Throws<ArgumentException>(() => _vowelCount.Count(""));
+            Assert.That(ex.Message, Is.EqualTo(exceptionMessage));
+        }
     }
 }
