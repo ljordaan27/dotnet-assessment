@@ -2,46 +2,62 @@ using NUnit.Framework;
 
 namespace TGS.Challenge.Tests
 {
-  [TestFixture()]
-  public class EquivalenceIndexTests
-  {
-    private readonly EquivalenceIndex _equivalenceIndex;
-
-    public EquivalenceIndexTests()
+    [TestFixture()]
+    public class EquivalenceIndexTests
     {
-      this._equivalenceIndex= new EquivalenceIndex();
-    }
+        private readonly EquivalenceIndex _equivalenceIndex;
 
-    [Test()]
-    public void Returns_Index_ForValidNumberSequence()
-    {
-        var index = _equivalenceIndex.Find(new int[] { 1, 2, 3, 4, 5, 7, 8, 10, 12 });
+        public EquivalenceIndexTests()
+        {
+            this._equivalenceIndex = new EquivalenceIndex();
+        }
 
-        Assert.AreEqual(6, index);
-    }
+        [Test()]
+        public void Returns_Index_ForValidNumberSequence()
+        {
+            var index = _equivalenceIndex.Find(new int[] { 1, 2, 3, 4, 5, 7, 8, 10, 12 });
 
-    [Test()]
-    public void Retruns_Neg1_ForInvalidNumberSequence()
-    {
-      var index = _equivalenceIndex.Find(new int[] { 2, 2, 3, 4, 3, 74, 8, 10, 12 });
+            Assert.AreEqual(6, index);
+        }
 
-      Assert.AreEqual(-1, index);
-    }
+        [Test()]
+        public void Retruns_Neg1_ForInvalidNumberSequence()
+        {
+            var index = _equivalenceIndex.Find(new int[] { 2, 2, 3, 4, 3, 74, 8, 10, 12 });
 
-    [Test()]
-    public void Returns_Index_ForValidNumberSequence_LeftWeighted()
-    {
-        var index = _equivalenceIndex.Find(new int[] { 10, 11, 3, 1, 1, 1, 9, 9 });
+            Assert.AreEqual(-1, index);
+        }
 
-        Assert.AreEqual(2, index);
-    }
+        [Test()]
+        public void Returns_Index_ForValidNumberSequence_LeftWeighted()
+        {
+            var index = _equivalenceIndex.Find(new int[] { 10, 11, 3, 1, 1, 1, 9, 9 });
 
-    [Test()]
-    public void Returns_Index_ForValidNumberSequence_RightWeighted()
-    {
-        var index = _equivalenceIndex.Find(new int[] { 4, 3, 5, 6, 7, 5, 10, 15 });
+            Assert.AreEqual(2, index);
+        }
 
-        Assert.AreEqual(5, index);
-    }
-  }  
+        [Test()]
+        public void Returns_Index_ForValidNumberSequence_RightWeighted()
+        {
+            var index = _equivalenceIndex.Find(new int[] { 4, 3, 5, 6, 7, 5, 10, 15 });
+
+            Assert.AreEqual(5, index);
+        }
+
+        [Test()]
+        public void Returns_Neg1_ForEmptyArray()
+        {
+            var index = _equivalenceIndex.Find(new int[] { });
+
+            Assert.AreEqual(-1, index);
+        }
+
+        [Test()]
+        public void Returns_Index_ForValidNumberSequenceWithNegativeNumbers_RightWeighted()
+        {
+            var index = _equivalenceIndex.Find(new int[] { -5, -4, -3, -5, -6, -7, -8, -5, -10, -15 });
+
+            Assert.AreEqual(6, index);
+        }
+    } 
 }

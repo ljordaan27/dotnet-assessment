@@ -26,6 +26,7 @@ namespace TGS.Challenge
                 {
                     vowelCount += value.ToLower().Split(vowel).Length - 1;
                 }
+
                 return vowelCount;
             }
             else

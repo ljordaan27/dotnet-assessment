@@ -17,9 +17,30 @@ namespace TGS.Challenge
 
     public class EquivalenceIndex
     {
-      public int Find(int[] numbers)
-      {
-        return -99;
-      }
+        public int Find(int[] numbers)
+        {
+            var leftSum = 0;
+            var rightSum = 0;
+            var noIndexFound = -1;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                rightSum += numbers[i];
+            }
+            
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                rightSum -= numbers[i];
+
+                if(leftSum == rightSum)
+                {
+                    return i;
+                }
+
+                leftSum += numbers[i];
+            }
+
+            return noIndexFound;
+        }
     }
 }
