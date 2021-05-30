@@ -20,7 +20,7 @@ namespace TGS.Challenge
             var vowels = new List<char> { 'a', 'e', 'i', 'o', 'u' };
             var vowelCount = 0;
 
-            if (value != null && value != "" && value.Length > 0)
+            if (!string.IsNullOrWhiteSpace(value) && value.Length > 0)
             {
                 foreach (var vowel in vowels)
                 {
