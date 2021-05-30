@@ -31,7 +31,7 @@ namespace TGS.Challenge
             }
             else
             {
-                throw new ArgumentException("Value cannot be null");
+                throw new ArgumentException("Input value cannot be null");
             }
         }
     }

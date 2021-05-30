@@ -70,7 +70,7 @@ namespace TGS.Challenge.Tests
         [Test()]
         public void Empty_String_Returns_Correct_Count()
         {
-            var exceptionMessage = "Value cannot be null";
+            var exceptionMessage = "Input value cannot be null";
 
             var ex = Assert.Throws<ArgumentException>(() => _vowelCount.Count(null));
             Assert.That(ex.Message, Is.EqualTo(exceptionMessage));
